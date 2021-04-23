@@ -1,0 +1,22 @@
+{
+  "name": "express-auth-flow",
+  "version": "1.0.0",
+  "description": "Express authentication flow based on jwt",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christos Goulas",
+  "license": "ISC",
+  "keywords": [
+    "jwt",
+    "authentication",
+    "express",
+    "node"
+  ],
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.5.0"
+  }
+}
