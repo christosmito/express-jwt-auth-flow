@@ -187,6 +187,15 @@ function auth(model) {
         sendSuccessResponse(res, 200, "Your password was successfully changed");
     }
 
+    async function logOut(req, res, next) {
+        res.cookie("jwt", "loggedout", {
+            expires: new Date(0), //Date.now() + 10000
+            httpOnly: true 
+        });
+        
+        sendSuccessResponse(res, 200, "You are successfully logged out");
+    }
+
     return {
         signup,
         login,
