@@ -80,6 +80,7 @@ function auth(model, options) {
         if(!email) {
             return sendFailResponse(res, 400, "Please provide an email");
         }
+        options.to = email;
 
         const user = await  model.findOne({ email });
         if( !user ) {
