@@ -9,7 +9,7 @@ router.post("/signup", auth(User).signup);
 router.post("/login", auth(User).login);
 router.post("/update-password", auth(User).updatePassword);
 router.post("/forgot-password", auth(User, {
-    apiKey: "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",
+    apiKey: process.env.SENDGRID_API_KEY,
     to: "gouc53@gmail.com",
     from: "christosglx@hotmail.com",
     subject: "Reset token",

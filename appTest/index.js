@@ -1,4 +1,6 @@
 const express = require("express");
+require("dotenv").config({ path: "./.env" });
+
 const userRouter = require("./router/userRouter");
 
 const app = express();

@@ -2,9 +2,9 @@ const crypto = require("crypto");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const sendEmail = require("./utils/sendEmail");
+const sgMail = require("@sendgrid/mail");
 
-function auth(model) {
+function auth(model, options) {
     async function signup(req, res, next) {
         let {email, userName, password, confirmPassword} = req.body;
 
@@ -92,27 +92,13 @@ function auth(model) {
         user.passwordResetExpires = Date.now() + 10 * 60 *1000;
         await user.save({ validateBeforeSave: false }); //deactivate all the validators
 
-        const resetURL = `${req.protocol}://${req.get("host")}/users/reset-password/${resetToken}`;
-        const message = `Forgot your password? Click the url to create a new password
-            ${resetURL} \n If you are not the one who requested to reset your password,
-            please ignore this email`; 
-        console.log("MESSAGE");
-        console.log(message);
-        
-
         try {
-            await sendEmail({
-                email,
-                subject: "Reset your password. Expires in 10 minutes ",
-                message
-            })
-
+            await sendEmail(req, options, resetToken)
             sendSuccessResponse(res, 200, "Email was sent");
         } catch (error) {
             user.passwordResetToken = undefined;
             user.passwordResetExpires =  undefined;
             await user.save({ validateBeforeSave: false }); //deactivate all the validators
-
             sendFailResponse(res, 500, "The email could not be sent. Please try again.");
         }
     }
@@ -201,7 +187,8 @@ function auth(model) {
         login,
         forgotPassword,
         resetPassword,
-        updatePassword
+        updatePassword,
+        logOut
     }
 }
 
@@ -219,6 +206,19 @@ function createToken(id) {
         console.log("TOKEN CREATION ERROR");
         console.log(error);
     } 
+}
+
+async function sendEmail(req, options, resetToken) {
+    sgMail.setApiKey(options.apiKey);
+    const resetURL = `${req.protocol}://${req.get("host")}/users/reset-password/${resetToken}`;
+    const message = {
+        to: options.to,
+        from: options.from,
+        subject: options.subject,
+        text: options.text,
+        html: options.html + `<p>${resetURL}</p>`
+    }
+    await sgMail.send(message);
 }
 
 function sendTokenResponse(res, statusCode, token) {
