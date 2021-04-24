@@ -23,6 +23,7 @@ First you must create a model for your users with any name you want, and must ha
 A very basic example is demonstrated below using mongoose (It is highly recommended to validate every field)
 
 ```
+//Model file
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -38,12 +39,15 @@ module.exports = mongoose.model("User", userSchema);
 
 Now in you router file you must require your user's model and the express-auth-flow, and make a routes as below. The paths must be the same. The emails are sent via [sendgrid](https://sendgrid.com/) and you must login for a free account and create an api key. The options argument are:
 - apiKey: The key that you have created from [sendgrid](https://sendgrid.com/)
-- from: Your company's/app's email(It must be the one tha you verify in sendgrid)
+- from: Your company's/app's email(It must be the one tha you have verified in sendgrid)
 - subject: The email's subject
 - text: The raw message
 - html: The message formated with html
 
+An example is demonstrated below
+
 ```
+//Router file
 const express = require("express");
 
 const User = require("../model/userModel");
