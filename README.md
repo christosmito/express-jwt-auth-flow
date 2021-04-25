@@ -25,7 +25,7 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
     email: String,
-    userName: String,
+    username: String,
     password: String
 })
 

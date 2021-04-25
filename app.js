@@ -6,13 +6,13 @@ const sgMail = require("@sendgrid/mail");
 
 function auth(model, options) {
     async function signup(req, res, next) {
-        let {email, userName, password, confirmPassword} = req.body;
+        let {email, username, password, confirmPassword} = req.body;
 
         if(!email) {
             return sendFailResponse(res, 400, "Email is required");
         }
 
-        if(!userName) {
+        if(!username) {
             return sendFailResponse(res, 400, "username is required");
         }
 
@@ -33,7 +33,7 @@ function auth(model, options) {
         try{
             const newUser = await model.create({
                 email: email,
-                userName: userName,
+                username: username,
                 password: password,
                 confirmPassword: undefined
             });
