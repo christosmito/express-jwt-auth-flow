@@ -2,6 +2,10 @@
   "name": "express-auth-flow",
   "version": "1.0.4",
   "description": "Express authentication flow based on jwt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christosmito/express-jwt-auth-flow"
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
