@@ -1,6 +1,6 @@
 {
   "name": "express-auth-flow",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Express authentication flow based on jwt",
   "main": "app.js",
   "scripts": {
