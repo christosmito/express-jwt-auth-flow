@@ -7,6 +7,9 @@ created to be used with Express.js and Mongodb. The functionality that this pack
 ```bash
 # with npm
 npm install express-auth-flow
+
+# with yarn
+yarn add express-auth-flow
 ```
 
 ## Usage
