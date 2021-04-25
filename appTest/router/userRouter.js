@@ -17,5 +17,6 @@ router.post("/forgot-password", auth(User, {
     html: "<h1>This is a test</h1>"
 }).forgotPassword);
 router.post("/reset-password/:token", auth(User).resetPassword);
+router.post("/logout", auth(User).logOut);
 
 module.exports = router;
