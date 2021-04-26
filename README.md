@@ -85,5 +85,5 @@ All the responses are json objects with status and message keys. In login's resp
 ```
 
 ## Contact
-For any error/bug or just for say hello, feel free to send me at this email:
+For any error/bug or just to say hello, feel free to send me at this email:
 <christosglx@hotmail.com>
