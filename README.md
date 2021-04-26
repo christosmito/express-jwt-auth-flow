@@ -1,4 +1,4 @@
-# Express-jwt-Auth-Flow
+# Express-Auth-Flow
 Express-jwt-auth-flow is a package for authentication flow based on jwt. It was
 created to be used with Express.js and Mongodb. The functionality that this package offers is: signup, login, logout, update password, forgot passwrod and logout. 
 
@@ -71,3 +71,19 @@ router.post("/reset-password/:token", auth(User).resetPassword);
 
 module.exports = router;
 ```
+
+## Response
+
+All the responses are json objects with status and message keys. In login's response the json object contains a key named token which is sent for the succesful login. In addition the login response send a cookie, this is for the frontend functionality. Finally, the logout is only for the frontend functionality as it deletes the cookie and the user is logged out.
+
+#### login response
+```
+{
+    "status": "Success",
+    "token": "a token tha will be sent as a response"
+}
+```
+
+## Contact
+For any error/bug or just for say hello, feel free to send me at this email:
+<christosglx@hotmail.com>
