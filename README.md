@@ -72,6 +72,62 @@ router.post("/reset-password/:token", auth(User).resetPassword);
 module.exports = router;
 ```
 
+## Request
+Now lets analyze the response that expected from every route
+
+### /signup
+```
+{
+    email: "an email",
+    username: "the user's username",
+    password: "the user's password",
+    confirmPassword: "confirmation password. Not stored in DB"
+}
+```
+
+### /login
+```
+{
+    email: "user's email"
+    password: "the user's password"
+}
+```
+
+### /logout
+```
+No input
+```
+
+### /update password
+```
+{
+    email: "user's email",
+    password: "the user's old password",
+    newPassword: "the user's new password",
+    confirmPassword: "confirmation password. Not stored in DB"
+}
+```
+
+### /forgot password
+```
+{
+    email: "user's email"
+}
+```
+
+### /reset password
+```
+{
+    password: "the user's new password",
+    confirmPassword: "confirmation password. Not stored in DB"
+}
+```
+
+## Notice
+The forgot password functionality works like this:
+First the user goes to /forgot-password route and fills the
+email, password, newPassword, confirmNewPassword inputs. Then an email is sent to the provided email with a reset token link that is valid for 10 minutes and when the user redirects to this link must provide the password and the confirmPassword in order to save new password.
+
 ## Response
 
 All the responses are json objects with status and message keys. In login's response the json object contains a key named token which is sent for the succesful login. In addition the login response send a cookie, this is for the frontend functionality. Finally, the logout is only for the frontend functionality as it deletes the cookie and the user is logged out.
