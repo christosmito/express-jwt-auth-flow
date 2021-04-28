@@ -1,6 +1,6 @@
 {
   "name": "express-auth-flow",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Express authentication flow based on jwt",
   "repository": {
     "type": "git",

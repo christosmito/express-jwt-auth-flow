@@ -183,14 +183,14 @@ function auth(model, options) {
         sendSuccessResponse(res, 200, "You are successfully logged out");
     }
 
-    return {
+    return Object.freeze({
         signup,
         login,
         forgotPassword,
         resetPassword,
         updatePassword,
         logOut
-    }
+    });
 }
 
 function arePasswordsEqual(password, confirmPassword) {
