@@ -1,5 +1,5 @@
 # Express-Auth-Flow
-Express-jwt-auth-flow is a package for authentication flow based on jwt. It was
+Express-auth-flow is a package for authentication flow based on jwt. It was
 created to be used with Express.js and Mongodb. The functionality that this package offers is: signup, login, logout, update password, forgot passwrod and logout. 
 
 ## Install
