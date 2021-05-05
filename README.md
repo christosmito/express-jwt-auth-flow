@@ -125,8 +125,8 @@ No input
 
 ## Notice
 The forgot password functionality works like this:
-First the user goes to /forgot-password route and fills the
-email, password, newPassword, confirmNewPassword inputs. Then an email is sent to the provided email with a reset token link that is valid for 10 minutes and when the user redirects to this link must provide the password and the confirmPassword in order to save new password.
+First the user goes to /forgot-password route and fills their
+email. Then an email is sent to the provided email with a reset token link that is valid for 10 minutes and when the user redirects to that link must provide the password and the confirmPassword in order to change their password.
 
 ## Response
 
